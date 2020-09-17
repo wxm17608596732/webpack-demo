@@ -20,6 +20,7 @@
   "homepage": "https://github.com/wxm17608596732/webpack-demo#readme",
   "devDependencies": {
     "css-loader": "^4.3.0",
+    "file-loader": "^6.1.0",
     "lodash": "^4.17.20",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.1",
