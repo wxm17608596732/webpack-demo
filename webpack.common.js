@@ -5,29 +5,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        index: './src/index.js',
+        main: './src/index.js',
+        vendor: [
+            'lodash'
+        ]
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Code Splitting'
+            title: 'Caching'
         })
     ],
     output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
+        filename: '[name].[chunkhash].js',
         path: path.resolve(__dirname, 'dist')
     },
     optimization: {
         splitChunks: {
             cacheGroups: {
                 commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "commons",
-                    chunks: "all",
+                    name: "manifest",
+                    chunks: "initial",
                     minChunks: 2
                 }
             }
-        }
+        },
     },
 };
