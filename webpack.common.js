@@ -10,12 +10,24 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Production'
+            title: 'Code Splitting'
         })
     ],
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "commons",
+                    chunks: "all",
+                    minChunks: 2
+                }
+            }
+        }
     },
 };
